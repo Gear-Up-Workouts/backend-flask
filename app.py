@@ -290,5 +290,41 @@ def recommend(username, numexercises):  # pass in num_exercises as param
     return temp
 
 
+### CARDIO
+@app.route('/cardio')
+@app.route('/cardio/<difficulty>')
+def getCardioWorkout(difficulty=''):
+    difficultyURL = '&' + difficultyURLBase + difficulty
+    response = requests.get(workoutAPIUrlBase + cardioURLBase + difficultyURL, headers={'X-Api-Key': workoutAPIKey})
+    if response.status_code == requests.codes.ok:
+        return response.text
+    else:
+        print("Error:", response.status_code, response.text)
+
+
+### STRENGTH
+@app.route('/strength')
+@app.route('/strength/<difficulty>')
+def getStrengthWorkout(difficulty=''):
+    difficultyURL = '&' + difficultyURLBase + difficulty
+    response = requests.get(workoutAPIUrlBase + strengthURLBase + difficultyURL, headers={'X-Api-Key': workoutAPIKey})
+    if response.status_code == requests.codes.ok:
+        return response.text
+    else:
+        print("Error:", response.status_code, response.text)
+
+
+### STRETCHING
+@app.route('/stretching')
+@app.route('/stretching/<difficulty>')
+def getStretchingWorkout(difficulty=''):
+    difficultyURL = '&' + difficultyURLBase + difficulty
+    response = requests.get(workoutAPIUrlBase + stretchingURLBase + difficultyURL, headers={'X-Api-Key': workoutAPIKey})
+    if response.status_code == requests.codes.ok:
+        return response.text
+    else:
+        print("Error:", response.status_code, response.text)
+
+
 if __name__ == '__main__':
     app.run()
