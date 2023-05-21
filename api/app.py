@@ -3,6 +3,7 @@ from pymongo import MongoClient
 import certifi
 
 from flask import Flask
+from flask_cors import CORS
 import requests
 import googlemaps
 import time
@@ -14,6 +15,7 @@ import datetime
 from datetime import date
 
 app = Flask(__name__)
+CORS(app)
 
 client = MongoClient(
     'mongodb+srv://125group:QF6ATvGuz2raHmlF@cluster0.z7no1h6.mongodb.net/?retryWrites=true&w=majority',
